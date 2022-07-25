@@ -1,0 +1,51 @@
+##Anaconda environment
+Creating an environment is good.Each and every project has its own requirements and dependencies of different libraries. It's good to utilize olny those libraries that are required by the project
+conda create -n flightfare
+activate flightfare
+
+Now change the path to the project where you are doing
+
+To install the package
+conda install django
+
+To delete an ennvironment:-
+conda env remove -n [env name]
+
+list all ennvironment
+conda env list
+
+create environment
+conda create -n myenv 
+
+create environment with particular version of package
+conda create -n myenv numpy=1.14
+
+deactivate ennvironment
+deactivate
+
+activate ennvironment
+activate myenv
+
+
+
+Diff b/w conda and pip
+>Conda will install in its conda ennvironment while pip install package in any environment
+
+
+## environment using Virtualenv
+>pip install virtualenv
+>virtualenv [env_name]  				//folder will be created
+>[env_name]\Scripts\Activate			//will activate the environment
+>deactivate								//deactivates the ennvironment
+>pip install django						//install the package accordingly
+>pip install django==3.1
+
+virtualenv -p python3.7.6 rasa_env		//installing specific version in virtualenv
+
+
+## RASA 
+rasa init
+rasa train
+rasa shell
+
+
