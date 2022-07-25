@@ -1,0 +1,1079 @@
+Natural Language Processing is an area of computer science and artificial intelligence concerned with the interactions between computer and human (natural) languages, in particular how to program computers to process and analyze large amounts of natural language data.
+Natural language Processing attempts to use a variety of techniques in order to create structure out of text data.
+
+Use Cases:-
+>Classifying emails as Spam vs. Legitimate
+>Sentiment analysis of text movie reviews
+>Analyzing trends from written customer feedback forms
+>Understanding text commands, "Hey Google, play this song"
+
+NLP applications:-
+>Very Good(Spam Detection,POS(Parts of speech) tagging,Named Entity Recognition)
+>Pretty Good(sentiment analysis,Machine translation,information extraction)
+>Needs improvement(Machine conversation(recognize speech),Paraphrasing and summarization)
+
+Why is NLP hard?
+>Language is ambiguous
+>Different interpretation
+>Different perception
+
+
+1. Course Basics
+>Python text basics
+>NLP python basics
+>Parts of speech tagging
+>Text classification
+>Semantics and Sentiment Analysis
+>Topic Modelling
+>Chatbots and Deep Learning(Keras)
+
+
+2. Python Text basics
+>Opening text files
+>Working with PDF files
+>Regular Expressions
+
+
+3. NLP Basics
+3.1 Covering:
+>Setup Spacy and Language Library
+>Tokenization
+>Stemming
+>Lemmatization
+>Stop Words
+>Spacy for vocabulary matching
+
+3.2 Spacy
+>Open source Natual language processing library
+>Designed to effectively handle NLP tasks with the most efficient implementation of common algorithms
+>For many NLP tasks, Spacy only has one implemented method, choosing the most efficient algorithm currently available
+>This means you often don't have the option to choose other algorithms
+3.2.1 Spacy setup
+>pip install spacy
+>Downloading the language library--python -m spacy download en_core_web_sm      (en--english) (sm--small)
+
+3.2.1 Spacy basics
+>Loading the language library
+>Building a pipeline object
+>Using tokens
+>Parts-of-speech tagging
+>Understand Token attributes
+
+3.2.2 The nlp() function from spacy automatically takes raw text and performs series of operations to tag,parse,and describe the text data.
+
+3.2.3 Tokenization
+>It is the process of breaking up the original text into component pieces (tokens)
+>Tokens are the basic building blocks of Doc object- everything that helps us understand the meaning of the text is derived from tokens and their relationship to one another.
+>Prefix:-Characters at the beginning	eg--($,",
+>Suffix:-Characters at the end			eg--km,),.,!,"	
+>Infix:-Characters in between			eg--, - ,-- ,/, ...
+>Exception:-Special-case rule to split a string into several tokens or prevent a token from being split when punctuation rules are applied.
+
+
+3.2.4 Stemming
+>Using some algorithm, reducing the word to its root value.
+>Often when searching text for a certain keyword, it helps if the search returns variations of the word.
+>For instance,searching for "boat" might also return "boats" and "boating".Here "boat" would be the stem for [boat,boater,boating,boats].
+>Stemming is a somewhat crude method for cataloging related words; it essentially chops off letters from the end until the stem is reached.
+>This works fairly well in most cases, but unfortunately English has many exceptions where a more sophisticated process is required. (lemmatization)
+>In fact, Spacy doesn't include a stemmer, opting instead to rely entirely on lemmatization
+>In NLTK stemmer can be seen-> Porter stemmer and Snowball stemmer.(both developed by Martin Potter)(Snowball is like the second version of Potter2 Algorithm)
+
+3.2.5 Lemmatization
+>In contrast to stemming,lemmatization looks beyond word reduction, and considers a language's full vocabulary to apply a morphological analysis to words.
+>The lemma of 'was' is 'be' and the lemma of 'mice' is 'mouse'. Further the lemma of 'meeting' might be 'meet' or 'meeting' depending on its use in a sentence.
+>Lemmatization is typically seen as much more informative than simple stemming, which is why Spacy has opted to only have lemmatization available instead of Stemming.
+>Lemmatization looks at surrounding text to determine a given word's part of speech, it does not categorize phrases.
+
+3.2.6 Stop Words
+>Words like 'a' and 'the' appear so frequently that they don't require tagging  as throughly as nouns,verbs and modifier.
+>We call these stop words and they can be filtered from the text to be processed.
+>Spacy holds a built-in list of some 305 english stop words.
+>These are the common words that does not add any value.
+>Common case is to remove stop words as they can hurt the NLP.
+
+3.2.7 Vocabulary and Matching
+>So far we've seen how a body of text is divided into tokens, and how individual tokens are parsed and tagged with parts of speech, dependencies and lemmas.
+>In this section we will identify and label specific phrases that match patterns we can define ourselves.
+>We can think of this as a powerful version of Regular Expression where we actually take parts of speech into account for our pattern search.
+
+
+
+
+3.3 NLTK
+>Stands for Natural language Toolkit
+>Initially released in 2001, it is much older than Spacy (released 2015)
+>It also provides many functionalities, but includes less efficient implementations
+
+3.4 NLTK vs Spacy
+>For many common NLP tasks,Spacy is much faster and more efficient, at the cost of the user not being able to choose algorithmic implementations
+>However, spacy does not include pre-created models for some applications, such as sentiment analysis, which is typically easier to perform with NLTK.
+>In this course, due to Spacy's state of the art approach and efficiency, we will focus on Spacy, but use NLTK when it is easier to use.
+>Utilize both libraries when they are best suited for a task.
+>Spacy is much more efficient than NLTK.
+
+
+
+
+
+
+
+
+
+4. Part of Speech and Named Entity Recognition
+4.1 Course Details:
+>Understand how to retrieve parts of speech using Spacy
+>Understand how to use Named Entity Recognition with Spacy
+>Visualize POS and NER
+>Perform Sentence Segmentation
+
+4.2 Parts of Speech
+>Most words are rare and it's common for words that look completely different to mean almost the same thing.
+>The same words in a different order can mean something completely different.
+>Even splitting text into useful word like units can be difficult in many languages
+>While it's possible to solve some problems starting from only the raw characters , it's usually better to use linguistic knowledge to add useful information.
+
+4.3 Visualizing Parts of Speech
+>Visualize parts of speech structure using "Displacy"
+
+4.4 Named Entity Recognition
+>Named Entity Recognition(NER) seeks to locate and classify named entity mentions in unstructured text into pre-defined categories such as the person names,organizations,locations,medical codes,time expressions,quantities,monetary values, percentages etc.
+>Spacy provides its NER very well but we can also add custom entities as somethings are there that are unique to your dataset.
+>We can add Single and multiple terms In the Custom NER.
+
+4.5 Sentence Segmentation
+>We saw briefly how Doc objects are divided into sentences
+>We will learn how sentence segmentation works, and how to set our own segmentation rules to break up docs into sentences based on our own rules.
+
+
+
+
+
+
+
+
+5.Text Classification
+5.1 Section Goals
+>Understand ML basics
+>Understand Classification Metrics
+>Understand Text feature extraction
+>Familiarize ourselves with Scikit-Learn and python to perform text classification on real data sets
+
+5.2 ML overview
+>Introduction to Statistical Learning (Gareth james)
+>ML is a method of data analysis that automates analytical model building.Usuing algorithms that iteratively learn from data, ML allows computers to find hidden insights without being explicitly programmed where to look.
+5.2.1 What ML is used for?
+>Fraud Detection
+>Web search results
+>Real time ads on web pages
+>Credit scoring and next-best offers
+>Prediction of equipment failures
+>New pricing models
+>Network intrusion detection
+>Recommendation engines
+>Customer Segmentation
+>Text sentiment analysis
+>Predicting customer churn
+>Pattern and image recognition
+>Email spam filtering
+>Text classification and recognition is a very common and widely applicable use of ML
+
+5.2.2 ML process
+Data Acquistion->Data cleaning->Split the dataset->Build model->Test model
+
+5.3 Classification Metrics
+>Evaluating our model did on test dataset(Accuracy,Precision,Recall,F1-Score)
+*Vectorization is the process of converting raw text into numerical information that the ML model can  understand
+5.3.1 Accuracy
+>In classification problems is the no. of correct predictions made by the model divided by the total no. of predictions.
+>Accuracy is useful when target classes are well balanced.Accuracy is not a good choice with unbalanced classes!
+>Imagine we had 99 legitimate ham messages and 1 spam text message.(Accuracy is not a good choice)
+>If our model was simply a line that always predicted HAM we would get 99% accuracy.
+5.3.2 Recall
+>Ability of a model to find all the relevant cases within a dataset.
+>Definition of recall is the no. of true positives divided by the no. of true positives plus the no. of false negatives
+5.3.3 Precision
+>Ability of a classification model to identify only the relevant data points
+>It is defined as the no. of true positives divided by the no. of true positives plus the no. of false positives	 
+5.3.4 F1-Score
+>A combination of Precision and Recall
+5.3.5 Recall and Precision
+>Often you have a trade-off between Recall and Precision
+>While recall expresses the ability to find all relevant instances in a dataset, precision expresses the proportion of the data points our model says was relevant actually were relevant.
+
+5.4 Confusion Matrix
+>The main point to remember with the confusion matrix and the various calculated metrics is that they all are fundamentally ways of comparing the predicted values vs the true values.
+>What constitutes "good" metrics, will really depend on the specific situation
+>True Positive, True Negative,False positive, False negative
+
+5.5 Scikit-Learn
+>It is the most popular ML package for python and has a lot of algorithms built-in
+ 
+ 
+5.6 Text Feature extraction
+>Most classic  ML algorithm can't take in a raw text
+>Instead we need to perform a feature "extraction" from the raw text in order to pass numerical features to the ML algorithm
+>Eg-We could count the occurence of each word to map text to a number.
+
+5.6.1 Count vectorization
+from sklearn.feature_extraction.text import CountVectorizer
+vect=CountVectorizer()
+*Document Term matrix
+>An alternative to CountVectorizer is something called TfidfVectorizer. It also creates a document term matrix from our messages.
+>However, instead of filling the DTM with token counts it calculates term frequency- inverse document frequency value for each word.(TF-IDF)
+
+5.6.2 TF-IDF
+>Term-Frequency(t,f)-It is the raw count of term in a document i.e. the number of times that term t occurs in document d
+>However, Term frequency alone isn't enough for a thorough feature analysis of the text.
+>Because the term "the" is so common, term frequency will tend to incorrectly emphasize documents which happen to use the word "the" more frequently, without giving enough weights to the more meaningful terms "red" and "dogs".
+>An inverse document frequency factor is incorporated which diminishes the weight of terms that occur very frequently in the document set and increases the weight of terms that occur rarely.
+>It is logarithmically scaled inverse fraction of the documents that contain the word (obtained by dividing  the total number of documents by the number of documents containing the term, and then taking the logarithm of that quotient)
+>Fortunately Scikit-Learn can calculate all these terms for us through the use of API.
+from sklearn.feature_extraction.text import TfidVectorizer
+vect=TfidVectorizer()
+dtm=vect.fit_transform(messages)
+>TF-IDF allows us to understand the context of words across an entire corpus of documents, instead of just its relative importance in a single document.
+
+5.6.3 Code 
+5.6.4 Text Classification Project
+
+
+
+
+
+
+
+
+
+6.Semantics and Sentiment Analysis
+6.1 Section Goals:
+>Understand semantic word vectors
+>Understand Sentiment Analysis
+>Leverage Sentiment analysis for Text classification
+
+6.2 Semantics and Word Vectors
+>In order to use Spacy's embedded word vectors,we must download the larger spacy english models.
+(Small version does not have word vectors)
+>Word2Vec is a two layer neural net that processes text.
+>Its input is a text corpus and its output is a set of vectors: feature vector for words in that corpus.
+>The purpose and usefulness of Word2Vec is to group the vectors of similar words together in vectorspace.
+>That is, it detects similarities mathematically.
+>Word2vec creates vectors that are distributed numerical representations of word features, features such as the context of individual words.It does so without human intervention.
+>Given enough data, usage and contexts, Word2Vec can make highly accurate guesses about a word's meaning based on past appearances.Those guesses can be used to establish a word's assosciation with other words(eg-"man" is to "boy" what "woman" is to "girl".)
+>Word2Vec trains words against other words that neighbor them in the input corpus.It does so in one of two ways, either using  context to predict a target word(a method known as continuous bag of words, or CBOW) or using a word t predict a target context which is called skip-gram.
+>Each word is now represented by a Vector.In spacy each of these vectors has 300 dimensions.
+>Interesting relationships can also be established between the word vectors.
+>Let's explore Spacy word vectors.
+
+6.3 Sentiment Analysis
+>We have already explored text classification and using to predict sentiment labels on pre-labeled movie reviews
+>But what if  we don't already have those labels?Are there methods of attempting to discern sentiment on raw unlabeled text?
+>VADER(Valence aware Dictionary for Sentiment Reasoning) is a model used for text sentiment analysis that is sensitive to both polarity(positive/negative) and intensity (strength) of emotion
+>It is a available in the NLTK package and can be applied directly to unlabeled text data.
+>Primarily,VADER sentiment analysis relies on a dictionary which maps lexical features to emotion intensities called sentiment scores.The sentiment score of a text can be obtained by summing up the intensity of each word in the text.
+>eg-Words like "love", "like","enjoy","happy" all convey a positive sentiment
+>VADER is intelligent enough to understand basic context of these words such as "did not love" as a negative sentiment.
+>It also understands capitalization and punctuation such as "LOVE!!"
+>Sentiment Analysis on raw text is always challenging due to several factors:
+Positive and negative sentiment in the same text data, Sarcasm using positive words in a negative way.
+
+
+
+
+
+
+
+
+
+7. Topic Modeling
+7.1 Section Goals
+>Understand Topic Modeling
+>Learn Latent Dirichlet Allocation
+>Implement LDA
+>Understand Non-negative Matrix factorization
+>Implement NMF
+>Apply LDA and NMF with a project
+
+7.2 Topic Modeling
+>It allows for us to efficiently analyze large volumes of text by clustering documents into topics.
+>A large amount of text data is unlabeled meaning we won't be able to apply our previous supervised learning approaches to create machine learning models for the data.
+>If we have unlabeled data, then we can attempt to "discover" labels
+>In the case of text data, this means attempting to discover clusters of documents, grouped together by topic.
+>A very important idea is to keep in mind here is that we don't know the "correct" topic or "right answer".
+>All we know is that the documents clustered together share similar topic ideas.
+>It is upto the user to identify what these topics represent.
+>We will begin by examining how Latent Dirichlet Allocation can attempt to discover topics for a corpus of documents.
+
+7.3 Latent Dirichlet Allocation 
+>LDA represents documents as mixtures of topics that spit out words with certain probabilities.
+>It assumes that documents are produced in the following fashion(Decide on the number of words N the document will have, then choose a topic mixture for the document)
+
+>Generate each word in the document by:(First picking a topic according to the multinomial distribution that you sampled previously, Using the topic to generate the word itself
+
+>Assuming this generative model for a collection of documents, LDA then tries to backtrack from the documents to find a set of topics that are likely to have generated the collection
+
+7.3.1 Assumptions
+>Documents with similar topics use similar group of words.
+>Latent topics can then be found by searching for group of words that frequently occur together in documents across the corpus.
+
+7.3.2 Two important Notes-
+>The user must decide on the amount of topics present in the document
+>The user must interpret what the topics are.
+
+
+7.4 Non-Negative Matrix factorization
+>It is an unsupervised algorithm that simultaneously performs dimensionality reduction and clustering
+>We can use it in conjuction with TF-IDF to model topics across documents.
+7.4.1 Steps
+>Construct vector space model for documents(after stopword filtering), result in a term document matrix A
+>Apply TF-IDF term weight normalisation to A
+>Normalize TF-IDF vectors to unit length
+>Initialise factors using NNDSVD(non-negative double singular value decomposition) on A
+>Apply Projected Gradient NMF to A
+*First three steps will be done automatically by TFIDFVectorizer
+
+
+
+
+
+
+
+
+
+
+
+8. Deep Learning for NLP
+8.1 Section Goals
+>Understand basic overview of Deep learning
+>Understand basics of LSTM and RNN
+>Use LSTM to generate text from source corpus
+>Create QA Chat Bot with Python
+
+8.2 Neuron, Perceptron
+>Artificial Neuron also has inputs and outputs
+>The simple model is known as perceptron
+>Inputs will be values of features, Inputs are multiplied by weights(weights initially starts off as random) 
+>Then these results are passed to an Activation function
+
+8.3 Introduction to Neural networks
+>Input Layer(Real values from the data)
+>Hidden Layer(Layers in between input and output, 3 or more layers is "deep network")
+>Output Layer(Final estimate of the data)
+
+>As you go forwards through more layers, the level of abstraction increases.
+>Activation function(Sigmoid function,Hyperbolic Tangent,Rectified Linear Unit(ReLu tends to have the best performance in many situations),
+>Changing the activation function used can be beneficial depending on the task!
+
+8.4 Keras
+
+8.5 Recurrent Neural Network(RNN)
+>RNN are specifically designed to work with sequence of data(Time series data-sales,Sentences,Audio,Car trajectories,Music)
+>Sends output back to itself
+>Cells that are a function of inputs from previous time steps are also known as memory cells.
+>RNN are also flexible in their inputs and outputs for both sequences and single vector values.
+>We can also create entire layer of Recurrent neurons.
+8.5.1 Flexible in their inputs and outputs:
+>Sequence to Sequence
+>Sequence to Vector
+>Vector to sequence
+
+8.6 LSTM & GRU(Gated Recurrent unit)
+>An issue RNN face is that after a while the network will begin to "forget" the first inputs, as information is lost at each step going through the RNN
+>We need some sort of "long term memory" for our networks
+>It makes sure that we are not going to forget those first inputs as information is lost at each step going through their current neural network.
+>The LSTM(Long-short Term memory) cell was created to help address these RNN issues.
+>LSTM is used for Texts generation(best)	
+
+>GRU makes this more simple than the standard LSTM leading to growing popularity.
+>Fortunately Keras has a really nice API that makes LSTM and RNN easy to work with.
+
+8.7 Text Generation
+
+8.8 QA Chatbot
+>Based on subset of Babi dataset by Facebook Research
+>In this there is a story and we will have a yes/no question
+8.8.1 End-to-end network(components)
+>Input memory representation
+>Output memory representation
+>Generating final predictions
+8.8.2 Create a full model with RNN and Multiple Layers
+
+
+
+
+
+
+9. NLP Libraries--
+1.Scikit Learn--Most powerful
+2.NLTK(Natural Language Toolkit)--The complete toolkit for all NLP Techniques. Recommend NLTK only as an education and Research Tool. It helps in learning but not good in production. Disadvantage is that it is heavy,slippery and and it has steep learning curve.Slow and not production ready
+3.TextBlob-Easy to use NLP tools API, built on top of NLTK and pattern. Favourite library for fast prototyping or building  application that don't require highly optimized performance. Beginners should start with it as it makes text processing simple.
+4.Stanford Core NLP-- It's in many existing production systems due to its production. It is a suite of production ready natural analysis tools. It includes part of speech tagging and entity recognition pattern learning, parsing etc. It's fast accurate and able to support several major languages.
+5.spaCy--Designed to be fast,streamlined, and production-ready. It is not as widely adopted.spaCy is minimal and opinionated and it does not flood you with options like NLTK does. Its philosophy is to only present one algorithm the best one for each purpose.You don't have to make choices and you can focus on being productive because it's built on site on. It's also lightning fast.
+6.Gensim--Most common used for topic modelling and similarity detection.It's not a general purpose and optimized library for topic modelling and document similarity analysis among the python. Most specialized topic modelling algorithms such as the LDA implementation are best in class. It is robust,efficient and scalable.
+7.fastText--Mainly used for applying  deep learning techniques to help the problems fast taxed.NLP library for learning of word embeddings and sentence classification created by Facebook's AI Research(FAIR) lab.These include representing sentences with a bag of words.It also employs a hierarchial soft maths that takes advantages of the unbalanced distribution of the class to speed up computation.
+
+
+
+
+
+
+
+
+
+
+10. Working of NLTK
+10.1 Installing, Importing, and Viewing NLTK Package--
+Check our version of Python-- 	python -V
+Install NLTK					pip install nltk
+Import NLTK
+Download Datasets
+Loading a particular text
+Printing only part of text
+
+We need to sanitize the data for the natural language processing.
+
+import nltk
+nltk.download_shell()							//it opens up the shell
+
+nltk.download("all")						//it will download all the packages of language)
+nltk.corpus.gutenberg.fileids()				//it will list all the files under that package "gutenberg"
+emma=nltk.corpus.gutenberg.raw('austen-emma.txt')			//loads the text file to a variable
+print(emma[:200])							//printing the first 200 words from the text file
+emma.split()[10:20]							//spliting from the place 10 to 20
+
+
+
+
+
+
+
+10.2 Tokenization(Text processing)--
+First of making a sample text file which have content
+
+with open("sample_text.txt","r") as f:
+	sample_text=f.read()
+
+sample_text									//will print the text that is in sample text
+sample_text=sample_text.lower()				//it will convert to lowercase so as to standardize the text for further text processing
+
+Tokenization--It is the process where we split longer strings of text into smaller pieces and we call these smaller pieces tokens
+Large paragraphs can be tokenized into sentences and sentences can be tokenized into words. 
+Further processing is generally performed after a piece of text has been  appropriatelyt tokenized
+There are 3 different ways to tokenize--
+1.Pure python- Splitting using whitespaces
+tokens=[word for word in sample_text.split()]
+print tokens										//splitting the text on the basis of spaces
+
+2.Using NLTK tokenizer--
+tokens=nltk.word_tokenize(sample_text)
+print(tokens)
+
+3.Regex tokenizer--
+from nltk.tokenize import RegexpTokenizer
+tokenizer=RegexpTokenizer(r'\w+')							//this removes the punctuation marks
+tokens=tokenizer.tokenize(sample_text)
+print(tokens)
+
+
+token_freq=nltk.FreqDist(tokens)						//getting the frequencies of tokens as a dictionary
+token_freq["hubble"]								//no of times the "hubble" word appears, key of a dictionary
+
+>We can also plot the tokens using matplotlib
+%matplotlib inline
+token_freq.plot(20,cumulative=False)				//if the words like a,an,the are mostly used, then we need to remove it as they are the stop words
+
+
+>Fetching the stop words--
+from nltk.corpus import stopwords
+stop_words=set(stopwords.words('english'))
+print(stop_words)
+
+
+
+>We need to remove stop words from our text:
+def remove_stopwords(words):
+	filtered_words=[]
+	for word in words:
+		if word not in stop_words:
+			filtered_words.append(word)
+			
+	return filtered_words
+
+print(remove_stopwords(tokens))
+
+
+
+
+
+>>Now we are going to tokenize sample text through sentences:-
+sents=nltk.sent_tokenize(sample_text)
+print(sents)										
+sents[0]
+sents[1]							//it is understanding when the sentence is complete
+
+>Now we want to remove the punctuations from the sentence by using the list of unwanted punctuation already defined in string package--
+import string
+string.punctuation								//all the punctuations already defined
+
+new_text=''.join([i for i sample_text if i not in string.punctuation])
+print(nltk.word_tokenize(new_text))					//in this we have joined all the words except punctuations
+
+
+
+
+
+10.3 Stemming and Lemmatization--
+Stemming--It is a process that chops off the ends of the words in the hope of achieving this goal correctly. The similar words are chopped to get the main word like demcroacy,democratic etc.
+Stemming of the word working is work.
+Most common algorithm used is Porter stemming algorithm. eg-- nltk.stem.PorterStemmer
+
+Lemmatization--It refers to doing things properly with the use of a vocabulary and morphological analysis of words normally aiming  to remove  inflectional endings only and to return the base or dictionary form of a word  which is known as Lemma
+
+Saw Word--Stemming would return 's' while lemmatization would return 'c' or 'saw' depending on whether the use of the token was a verb/noun.
+
+The goal of both stemming and lemmatization is to reduce inflectional forms and sometimes related forms of words to common form.
+They both can remove important information but also helps us normalize our corpus.
+Stemming works on words without knowing its context, leading to lower accuracy and works faster than lemmatization.
+
+**Just trying different algorithm**
+
+PorterStemmer--
+from nltk.stem import PorterStemmer
+stemmer=PorterStemmer()
+print(stemmer.stem('running'))							//run
+print(stemmer.stem('decreases'))						//decreas
+print(stemmer.stem('multiplying'))						//multipli
+
+
+LancasterStemmer--
+from nltk.stem import LancasterStemmer
+stemmer=LancasterStemmer()
+print(stemmer.stem('running'))							//run
+print(stemmer.stem('decreases'))						//decreas
+print(stemmer.stem('multiplying'))						//multiply
+
+>SnowballStemmer
+
+
+
+Lemmatizer--
+from nltk.stem import WordNetLemmatizer
+lemmatizer=WordNetLemmatizer()
+print(lemmatizer.lemmatize('running'))							//running
+print(lemmatizer.lemmatize('decreases'))						//decrease
+print(lemmatizer.lemmatize('multiplying'))						//multiplying
+
+
+
+
+
+
+>>POS(Part of Speech) tagging--It is used when we need to analyze the words in the sentence for grammar and their arrangement in a matter that shows the relationship among the words, so POS tag defines the usage and function of a word in the sentence.
+
+from nltk import sent_tokenize,word_tokenize,pos_tag
+sents=nltk.sent_tokenize(sample_text)
+print(sents[1])												//printing the 1st sentence
+
+tokens=word_tokenize(sents[1])
+pos_tag(tokens)											//this comes with the tags like proper noun,verb etc.
+
+
+
+
+
+10.4 Named Entity Recognition--
+The role of named entity recognizer is to detect relevant entities in our corpus.
+Sentence--Steve,the CEO of Apple Inc. is living in San Francisco
+Named Entities-("person":"Steve"),("org":"Apple Inc."),("location":"San Francisco")
+
+nltk.download("maxent_ne_chunker")				//package used in creating chunks
+
+Full Example--
+import nltk
+sentence="Steve Jobs, the CEO of Apple Inc. is living in San Francisco"
+
+tokens=nltk.word_tokenize(sentence)
+chunks=nltk.ne_chunks(nltk.pos_tag(tokens))
+
+
+for chunk in chunks:
+	print(chunk)			//all the words in the sentene will be splitted and will be tagged and the chunks will be created
+
+
+***For the better view of chunks**, it will show the labels or the named entity connected to the word, and also it can have mislabeling as we are using the very basic NER.In practise we use much efficient NER packages like Stanford NER tagger,spaCy etc.
+for chunk in chunks:
+	if hasattr(chunk,'label'):
+		print(chunk.label(),' '.join(c[0] for c in chunk))		
+		
+
+We will be using spaCy--(better efficiency)
+import spacy
+nlp=spacy.load('en')								//we need to state the language
+doc=nlp("Steve Jobs, the CEO of Apple Inc. is living in San Francisco")
+for ent in doc.ents:
+	print(ent.text,ent.label_)						
+
+
+	
+	
+	
+******Used to print image on jupyter notebook*********
+from IPython.display import Image
+Image("ngrams.png")
+	
+	
+	
+	
+	
+10.5 Latent Semantic Analysis
+>Multiple words with the same meaning(synonymy)
+>One word with multiple meanings(polysemy)
+
+*The main motive of LSA is to find these variables and transform the original data into these new  variables and hopefully, the dimensionality of this new data is much smaller than the original
+
+*Library used--from sklearn.decomposition import TruncatedSVD
+
+10.5.1 Synonyms:
+>"buy" and "purchase"
+>"big" and "large"
+>"quick" and "speedy"
+
+10.5.2 Polysemy---"Man"(different meanings in different sentences),"Milk"
+
+
+
+10.5.3 What is LSA used for?(Applications)
+1.Dimensionality reduction(We want dimensionality reductions to save processing time)
+>You can visualize the things upto 3 dimensions
+>Dimensionality reduction is therefore useful because it lets you see your data
+2.Information Retrieval
+
+	
+	
+	
+	
+	
+	
+11. NLP Techniques and Algorithms--
+1.N-gram:
+It is a continuous sequence of n items from a given sequence of text or speech. They are the combinations of adjacent words or letters of length n that you can find in your source text.It is messy,so it is not mostly used as machine learning algorithm can't work directly with raw data as machine learning requires well defined fixed length inputs and outputs.Machine learning requires the text to be converted into numbers,specifically vectos of numbers.
+
+n=1(unigram), n=2(bigram), n=3(trigram)
+
+"This is a sentence"
+N=1(this,is,a,sentence)
+N=2(this is,is a, a sentence)
+N=3(this is a, is a sentence)
+
+
+import nltk
+with open("sample_text.txt","r") as f:
+	sample_text=f.read()
+
+
+import regex as re
+def remove_punctuation(words):
+	new_words=[]
+	for word in words:
+		new_word=re.sub(r'[^\w\s]','',word)
+		if new_word='':
+			new_word.append(new_word)
+			return new_words
+
+			
+
+sample_text=sample_text.lower()
+words=nltk.word_tokenize(sample_text)
+tokens=remove_punctuation(words)
+print(tokens)
+
+token_freq=nltk.FreqDist(tokens)						//returns the frequencies of words in a dictionary format
+
+
+***Getting the no. of ngrams**
+fourgrams=nltk.ngrams(tokens,4)						//dividing the words into a lot of 4, it can be 3/2/5 any no. of lot
+token_freq=nltk.FreqDist(tokens) 
+for token in token_freq.keys():
+	print(token,token_freq[token])
+
+	
+and then joining into one sentence:-and the sentence will be joined using space
+fourgrams=nltk.ngrams(tokens,4)
+ngram_grouped=[" ".join([i for i in x]) for x in fourgrams]
+print(ngram_grouped)
+
+
+
+
+
+
+
+2.Bag of Words model--
+It is a way of extracting features from text for use in modeling and it ignores grammar and order of words.
+We have text data
+a list of vocabulary is created based on the corpus(the text data)
+each document or data entry is represented as numerical vectors
+
+
+import nltk
+sentence1="I love studying maths"
+sentence2="I love studying statistics"
+sentence3="I love driving"
+
+text=" ".join([sentence1,sentence2,sentence3])
+tokens=list(set(nltk.word_tokenize(text)))							//tokenizing the sentences
+tokens
+
+bow1=[1,1,1,1,0,0]							//this is done as according to 1st sentence, we require only words that are there in sentence, we do not want driving and statistics. so 1,1,1,1 for the words we want and 0,0 for those we do not want
+bow2=[1,0,1,1,0,1]
+bow3=[1,0,0,1,1,0]
+
+
+So bag of words is a representation of text that describes the occurence of words withing a document that is each document or data entry is represented as numerical vectors based on the vocabulary built from the corpus. The models is only concerned with whether known words occur in the document, not where in the document.
+
+
+
+
+3.word2vec				//It is made in google
+
+>Case Study---Document similarity
+
+
+
+
+
+
+
+#Projects
+
+1.Build your own spam detector
+1.1 Get pre-processed data here --	https://archive.ics.uci.edu/ml/datasets/Spambase
+
+1.2 Takeways
+>A lot of NLP is just pre-procssing data, so we can use ML algorithms we already know
+>You can choose any ML algorithm as long as you can make the data fit.
+
+1.3 Key takeaways from Spam Detection Project
+>All ML interfaces are the same
+>I could have picked any other classifier
+>What is important,Identify that it's a classification task, choose a classification model
+>NLP is the application of ML to text, not ML itself
+>if we were learning the ML algorithms , you would be having a much tougher time
+>Consider the current level of abstraction
+>Numpy and Scipy specialize in doing extremely fast linear algebra
+>Most data scientist don't have to think about how numpy works.
+>GPU does matrix operations much faster than the CPU
+>Google invented TPU for deep learning to go even faster.
+>In fact, it's more important to understand why you don't need to understand NB/Boosting
+
+1.4 FAQ
+>ML does not care what the data is(like finance,biology etc.) .They just sees a list of numbers
+>Don't overfit
+>Really complex-model with many parameters many not be good
+>100%accuracy on train data, but 51% on test data(its not worth)
+
+1.5 SPAM detection II
+
+
+
+
+
+
+
+2. Build your own sentiment analyzer
+>sentiment=how positive or negative some text is
+eg-Amazon reviews, Yelp reviews,Hotel reviews, tweets etc.
+>The data is in XML. We will use XML parser(Beautiful Soup) to extract the data. Only look at the key "review_text"
+
+2.1 Tokenization
+>Split the string into individual words known as tokens.
+>nltk.tokenize.word_tokenize
+>Sometimes we want to write our own custom tokenizer.
+>Can be application specific(so you need to be knowledgeable about your dataset)
+>Turning tokens into feature vectors
+>We need to find out which words have positive weights and which words have negative weights
+
+2.2 FAQ
+1.Different Accuracy(Training data is different everytime as random shuffling is going every time you run the code,ML don't like imabalanced datasets)
+2. Why not just pick the most powerful classifier and plug it in(Linear models are used as they are easy to interpret)(Powerful models loose the interpretability
+3. Baselines(We should always check that how good we do with a standard model)
+4. The meaning of accuracy
+5.Can we improve sentiment analysis(Yes, Recursive Neural Tensor Networks(RNTNs),standford University developed)
+
+2.3 Improving  Sentiment Analysis
+1.Learn about deep learning and neural networks "in general"
+2.Usually required linear algebra and calculus(libraries like Theano and Tensorflow hide the hard math)
+3. Learn about special kind of network (Recurrent neural network),Bag of words,Markov model
+
+
+
+
+3. Article Spinner
+>It means taking an article which is very popular and modifying certain words or phrases so that it doesn't exactly match the original, which then prevents the search engines from marking it as duplicate content.
+
+3.1 How to perform it?
+>Take an article and slightly modify it(synonyms,replace phrases that have the same meaning)
+>Results in a new article with different terms but same meaning
+>Does not always work well in reality:
+"Udemy.com is a platform or marketplace for online learning"
+"Udemy.com is a podium or forum for online research"
+
+
+
+
+#Extra
+1.Appendix
+>The end of the book is called "Appendix"
+>"OpenAIGym" is the library used for Reinforcement Learning
+>The act of coding helps you understand the theory better than if you had just studied only the theory
+>Implementation helps you understand the theory but it also helps you understand the intuition better also.
+>Big mistakes people make is they read some intuition by someone else who has experience, when they themselves do not.
+>We don't want skills that are easy to get, we want skills that are hard to get
+>Most practical courses does is just plug into an API-w or 3 lines of code(did it really take decades to realize the potential of 2-3 lines of code)
+>When you are using "Keras", you are not "learning deep learning", you are learning "how to program with someone else's API"
+>They know their math inside and out, typically a CS or similar background
+>If you can't implement it, you don't understand it.
+>Beware there's no difference between Python code notebook/running  a script in the console/IPython etc.
+>Python3 was created in 2008
+>Convolutional neural networks
+>Catalog of how to learn Machine Learning (deeplearningcourses.com)
+
+
+
+5. Machine Learning Basics review
+>Numpy,Matplotlib,Pandas,Scipy,Scikit-Learn
+
+5.1 What does it mean to "learn" machine Learning?
+>Understand the machine learning algorithm(theory behind the algorithm,modelling assumptions,How the model is epxressed mathematically,How learning rules are derived via geometry and probability,How do implement the algorithm in code)
+>Some people equate ML to understanding the "high level" ideas and how to use Sklearn(wrong)
+
+5.2 Classification
+>Trying to Predict a category
+>MNIST(handwritten digits) --trying to predict what digit
+>You can do with any of the handwritten thing; convert it into a digital form
+5.2.1 Two common types of Data
+>Images(eg-MNIST)--computer vision
+>Text(eg-emails)--Natural language processing(NLP)
+(These two fields have been transformed by deep learning) 
+
+5.3 Regression
+5.4 Feature Vector(Every column is a feature)
+>A feature must be useful
+>Use your domain knowledge to find the most useful features
+>All data is the same. A random forest works the same way  whether it is a biological dataset or finance dataset.
+>All ML interfaces are the same. Learn and predict
+
+5.5 Comparing the different models?
+>Learn about the models, their strengths and weaknesses etc.
+>Linear Models(Linear Regression, Logistic Regression)--very easy to interpret
+>Basic Non-linear models(Naive bayes,Decision tree,K-Nearest neighbor)--These are not necessarily "better" than a linear model
+>Ensemble Models(Random Forest,AdaBoost,ExtraTrees,Gradient Boosted Trees)--Average the predictions from multiple trees,XGBoost has been used to win a significant no. of Kaggle contests
+
+*If the dataset is too large,SVM is not feasible
+
+>Deep Learning is not just "plug and play"(unlike Random Forest)--If you just try it on Random Data, it may fail spectacularly
+In deep learning, you wouldn't normally use Sklearn--Instead Theano,Tensorflow,Keras etc.
+
+
+
+#ends
+
+
+
+
+
+* Corpus -- Collection of text documents
+* Ngrams -- combination of 'n' words/ combination together (eg- like cricket)
+* Normalization having two forms :- Stemming / Lemmatization (Stemming not good as words does not produce meaningful meaning)
+
+
+
+* Lemmatizer
+print(lemm.lemmatize('running',pos='v'))			//defining pos tag as verb to get the output run
+
+*Finding synonym
+from nltk.corpus import wordnet
+wordnet.synsets('computer')
+
+
+
+
+
+
+
+
+
+
+
+
+
+1.Tokenization
+Helps to convert paragraphs to sentences or words
+
+2.Stemming and Lemmatization
+Process of reducing infected words to their word stem
+
+Lemmatization is different from Stemming as Lemmatization helps to get the word as available in vocabulary , not just the word stem of it. It means that word that is understood by humans, will have its meaning
+Lemmatization takes more time than stemming
+Stemming can be used like Setiment Analysis, Spam Classification where we don't need to create a meaningful word
+Lemmatization can be used like in Chatbots,Q&A where we need to sent repsonse and that needs meaningful word
+
+eg--> finally , final, finalized = Stemming (fina) / Lemmatization(final)
+
+3.Stopwords are the English words which does not add much meaning to a sentence
+They don't add much value to sentence
+
+
+4. Approach
+>First convert your sentences into lowercase to avoid conflict b/w he/He. Also if u want to skips some words, skip it and rest convert to lowercase
+>Remove the stop words
+>Do the stemming / lemmatization
+
+5. Bag of Words (CountVectorizer) (Document Matrix)
+A bag-of-words is a representation of text that describes the occurrence of words within a document.
+Words with their frequency and their respective matrix will be formed considering the sentences
+Those words will now be written as features(f1,f2,f3) and now will consider each sentence and give 1 in feature if the word exist in sentence and 0 if not
+and this whole thing represented in a dataframe, meaning the vectors are created from words
+
+We have better techniques than Bag of Words to create vectors like TF-IDF or Word2Vec
+
+*Disadvantage*
+In Bag of Words technique, we are not able to determine which word is more important, as when we create vector using this, it is either word is present(1) or not present(0)
+But in sentiment analysis, we want to give more value to positive or negative words
+
+
+6.TF-IDF (Term Frequency- Inverse Document Frequency)
+Term Frequency = No. of repetition of words in a sentence / No. of total words in a sentence  (single sentence)
+
+eg--Sentence1 = good boy, Sentence 2= good boy girl
+TF Matrix
+			Sent1 		Sent2
+good		1/2			1/3
+boy			1/2			1/3
+girl		0			1/3
+
+
+Inverse Document Frequency - log(No. of Sentences / No. of sentences containing words)
+Here 2 is the no. of sentences being constant and next part is the no. of sentences containing the particular word
+IDF Matrix
+			IDF
+good		log(2/2) = 0
+boy			log(2/2) = 0
+girl		log(2/1) = log2
+
+
+Finally, we will multiply TF * IDF
+
+
+**TF-IDF gives importance to uncommon words (There is a chance of overfitting)
+**Both Bag of Words and TF-IDF, semantic information is not stored (semantic means orderwise data is not stored leading to no relation between the words in sequence)
+
+
+7. Word2Vec
+In this, each word is basically represented as a vector of 32 or more dimension instead of a single number
+Here the semantic information and relation between words is also preserved
+
+To use this, we need to install "gensim" library (install it)
+Gensim models creates a 100 dimension vector for each word specifing the relation with words
+
+
+**Text Processing Techniques**
+>Bag of Words
+>TF-IDF
+>Word2Vec
+In these preprocessing Techniques, sequence data is discarded
+
+
+8. RNN (Recurrent Neural Network)
+> Works best in sequential data
+>More specifically used in Amazon Alex, Q&A , Chatbot where the sentence makes meanings
+>Used in Time series data
+
+
+9. Word Embedding (Feature Representation)
+If we apply One hot representation to a 10000 words dictionary, we will get 10000 dimension column for each word
+eg--Man at 5000 index will be represented with [0,0,0,0,....0,0,1,0..,0]. Not storing any semantic information and also very hard for machine to train
+**Sparse Matrix--This representation will become Sparse matrix--It means more no. of zeros and less no. of Ones
+
+To solve this, we use Word Embedding (and specific technique named as Feature Representation)
+(There are other techniques like Word2Vec, Glove etc.)
+For this, we have some features(predefined by us) and a 10000 words dictionary
+Now in this dimension is reduced to 300 for each word, far better than one hot representation
+
+		Boy		Girl	King	Apple
+Gender   -1		 1		 -1       0.1
+Royal   0.01	0.02	0.95	  0.01
+Fruit   0.03    0.01    0.01      0.97
+
+We can make analogy here, like if Boy tends to Girl, then what will king tends to 
+We find the similarity between the words using Cosine Similarity(most used in Recommendation System)
+and if we convert this 300 dimension matrix into 2 dimension, we will see that Boy and Girl are near, King and queen are near, Apple and Mango are near
+
+
+**Implementation with Keras**
+1. Sentences
+2. One Hot Representation--We will get the index from the dictionary
+3. Index provided to Embedding Layer (word embedding)
+4. To form embedding matrix, voc_size=10000, dimension = 10
+ 
+
+
+
+Recommender Systems--
+Recommended for you
+Collaborative Filtering-It means recommending stuff based on the combination of what you did and what everbody else did.
+1.User based Collaborative filtering-Build a matrix of things each user bought/viewed/rated,compute similarity scores between users, find users similar to you, recommend stuff they bought/viewed/rated that you haven't heard
+Problem--
+People are fickle;taste change
+People do bad things; this is called a schilling attack
+More computational power is used as we are finding out the similarities between millions of people.
+
+2.Item based Collaborative filtering-Items do not change as compared to the change people do.A movie will be the same movie, it does not change. We can save a lot of computational power as we evaluating and finding out the similarities between items. Harder to manipulate the system that used item based collaborative filtering as we can have fake items and ties to the original items
+
+
+Fully developed and deployed recommendation systems are extremely complex and resource intensive
+Since full recommender systems require a heavy linear background, the Advanced Recommender system(optional resource)
+
+
+
+
+
+Two most common  types of recommender systems are Content based and collaborative filtering(CF)--
+>collaborative filtering produces recommendations based on the knowledge of users attitude to items, that is it issues  the "wisdom" of the crowd" to recommend items
+>Content based recommender systems focus on the attributes of the items and give you recommendations based on the similiarity between items
+
+
+In general, Collaborative filtering is more common used than content based systems because it usually gives better results  and is relatively easy to understand(from an overall implementation perspective).
+The algorithm has the ability to do feature learning on its own, which means that it can start to learn for itself what features to use
+
+CF can be divided into Memory Based Collaborative Filtering and Model Based Collaborative filtering
+In the advanced notebook, we implement Model Based CF by using singular value decomposition(SVD) and memory  based CF by computing cosine similarity
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
